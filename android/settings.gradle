@@ -1,4 +1,4 @@
-rootProject.name = 'millicast5'
+rootProject.name = 'millicast7'
 include ':react-native-webrtc'
 project(':react-native-webrtc').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-webrtc/android')
 

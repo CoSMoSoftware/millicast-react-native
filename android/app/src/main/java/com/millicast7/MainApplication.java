@@ -1,4 +1,4 @@
-package com.millicast5;
+package com.millicast7;
 
 import android.app.Application;
 

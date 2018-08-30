@@ -1,5 +1,5 @@
 {
-  "name": "millicast5",
+  "name": "millicast7",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -7,7 +7,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "immutable": "^3.8.2",
     "react": "16.4.1",
     "react-native": "0.56.0",
     "react-native-webrtc": "^1.67.1"

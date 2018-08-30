@@ -14,11 +14,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React Native!"
 
-@interface millicast5Tests : XCTestCase
+@interface millicast7Tests : XCTestCase
 
 @end
 
-@implementation millicast5Tests
+@implementation millicast7Tests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL(^)(UIView *view))test
 {
