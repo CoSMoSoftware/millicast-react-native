@@ -5,14 +5,13 @@ import {
 } from 'react-native'
 
 import {
-  milliId,
   iceServers,
   websocketUrl
 } from '../config'
 
 import { connectMillicast } from '../client'
 
-const connectPressed = async (setState) => {
+const connectPressed = async (setState, milliId) => {
   console.log('connecting milliast')
 
   setState({
@@ -47,10 +46,11 @@ export const renderButton = (state, setState) => {
   const status = state.get('status')
 
   if (status === 'disconnected') {
+    const milliId = state.get('milliId')
     return (
       <Button
         title='Connect'
-        onPress={ () => connectPressed(setState) } />
+        onPress={ () => connectPressed(setState, milliId) } />
     )
   } else if (status === 'connecting') {
     return (

@@ -15,30 +15,32 @@ import {
 } from './button'
 
 import {
-  milliId
-} from '../config'
+  renderMilliIdInput
+} from './input'
 
 import {
-  getState,
-  stateSetter
-} from '../util'
+  stateFieldSetter,
+  stateFieldsSetter
+} from '../state'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: '5%',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF'
   },
-  welcome: {
+  title: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10
   },
-  instructions: {
+  description: {
     textAlign: 'center',
     color: '#333333',
-    marginBottom: 5
+    marginTop: 5,
+    marginBottom: 15
   },
   video: {
     width: 480,
@@ -46,20 +48,26 @@ const styles = StyleSheet.create({
   }
 })
 
-export const renderApp = component => {
-  const state = getState(component)
-  const videoUrl = state.get('videoUrl')
-  const setState = stateSetter(component)
-
+export const renderApp = (state, setState) => {
   return (
-    <View style={styles.container}>
-      { renderRemoteStream(videoUrl) }
-      <Text style={styles.welcome}>Millicast Mobile Demo</Text>
-      <Text style={styles.instructions}>
-        Broadcast a stream with Millicast ID { milliId }
+    <View style={ styles.container }>
+      { renderRemoteStream(state) }
+      <Text style={ styles.title }>
+        Millicast Mobile Demo
+      </Text>
+      {
+        renderMilliIdInput(state,
+          stateFieldSetter(setState, 'milliId'))
+      }
+      <Text style={ styles.description }>
+        Broadcast a stream with the specified Millicast ID
         and see it from here.
       </Text>
-      { renderButton(state, setState) }
+      {
+        renderButton(state,
+          stateFieldsSetter(setState,
+            ['status', 'videoUrl', 'connection']))
+      }
     </View>
   )
 }

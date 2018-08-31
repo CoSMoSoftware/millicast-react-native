@@ -1,9 +1,14 @@
 import { renderApp } from './view/app'
-import { stateRenderer } from './util'
+import { stateRenderer } from './state'
+
+import {
+  milliId
+} from './config'
 
 export const App = stateRenderer(
   {
     videoUrl: null,
-    status: 'disconnected'
+    status: 'disconnected',
+    milliId
   },
   renderApp)

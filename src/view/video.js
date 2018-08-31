@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
   }
 })
 
-export const renderRemoteStream = videoUrl => {
+export const renderRemoteStream = state => {
+  const videoUrl = state.get('videoUrl')
   if (!videoUrl) return null
 
   return <RTCView streamURL={ videoUrl } style={ styles.video } />

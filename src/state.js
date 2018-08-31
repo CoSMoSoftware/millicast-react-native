@@ -10,13 +10,24 @@ export const setState = (component, entries) => {
 export const stateSetter = component => entries =>
   setState(component, entries)
 
-export const stateFieldSetter = (component, key) => value =>
-  setState(component, [[key, value]])
+export const stateFieldSetter = (setState, key) => value =>
+  setState({
+    [key]: value
+  })
+
+export const stateFieldsSetter = (setState, keys) => state => {
+  const inState = {}
+  for (const key of keys) {
+    inState[key] = state[key]
+  }
+  setState(inState)
+}
 
 export const getState = component =>
   component.state.state
 
-// stateRenderer :: Map -> (Component -> Element) -> Class Component
+// Renderer :: State -> (PartialState -> ()) -> Element
+// stateRenderer :: State -> Renderer -> Class Component
 export const stateRenderer = (initState, renderer) => {
   const initIState = IMap(initState)
 
@@ -30,7 +41,10 @@ export const stateRenderer = (initState, renderer) => {
     }
 
     render () {
-      return renderer(this)
+      const state = getState(this)
+      const setState = stateSetter(this)
+
+      return renderer(state, setState)
     }
   }
 }
