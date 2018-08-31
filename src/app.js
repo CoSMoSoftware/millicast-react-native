@@ -1,18 +1,9 @@
-import { Component } from 'react'
-
 import { renderApp } from './view/app'
+import { stateRenderer } from './util'
 
-export class App extends Component {
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      videoUrl: null,
-      status: 'disconnected'
-    }
-  }
-
-  render () {
-    return renderApp(this)
-  }
-}
+export const App = stateRenderer(
+  {
+    videoUrl: null,
+    status: 'disconnected'
+  },
+  renderApp)

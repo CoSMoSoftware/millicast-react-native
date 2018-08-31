@@ -1,8 +1,10 @@
 import {
-  MediaStream,
-  RTCPeerConnection,
-  RTCSessionDescription
+  MediaStream, // eslint-disable-line import/named
+  RTCPeerConnection, // eslint-disable-line import/named
+  RTCSessionDescription // eslint-disable-line import/named
 } from 'react-native-webrtc'
+
+/* global WebSocket */
 
 export const connectMillicast = async (websocketUrl, milliId, iceServers) => {
   console.log('connecting to:', websocketUrl)

@@ -5,7 +5,7 @@ import {
 } from 'react-native'
 
 import {
-  RTCView
+  RTCView // eslint-disable-line import/named
 } from 'react-native-webrtc'
 
 const styles = StyleSheet.create({

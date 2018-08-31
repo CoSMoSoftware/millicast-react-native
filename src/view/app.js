@@ -18,6 +18,11 @@ import {
   milliId
 } from '../config'
 
+import {
+  getState,
+  stateSetter
+} from '../util'
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -42,8 +47,9 @@ const styles = StyleSheet.create({
 })
 
 export const renderApp = component => {
-  const { status, videoUrl } = component.state
-  console.log('rendering with status', status, 'and video url:', videoUrl)
+  const state = getState(component)
+  const videoUrl = state.get('videoUrl')
+  const setState = stateSetter(component)
 
   return (
     <View style={styles.container}>
@@ -53,7 +59,7 @@ export const renderApp = component => {
         Broadcast a stream with Millicast ID { milliId }
         and see it from here.
       </Text>
-      { renderButton(component, status) }
+      { renderButton(state, setState) }
     </View>
   )
 }

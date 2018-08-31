@@ -10,14 +10,12 @@ import {
   websocketUrl
 } from '../config'
 
-import { setState } from '../util'
-
 import { connectMillicast } from '../client'
 
-const connectPressed = async (component) => {
+const connectPressed = async (setState) => {
   console.log('connecting milliast')
 
-  setState(component, {
+  setState({
     status: 'connecting'
   })
 
@@ -25,34 +23,34 @@ const connectPressed = async (component) => {
   const { stream } = connection
   console.log('got remote stream:', stream)
 
-  setState(component, {
+  setState({
     status: 'connected',
     videoUrl: stream.toURL(),
     connection
   })
 }
 
-const stopVideo = (component) => {
-  const { connection } = component.state
-
+const stopVideo = (connection, setState) => {
   if (connection) {
-    connection.pc.close()
-    connection.ws.close()
+    connection.get('pc').close()
+    connection.get('ws').close()
   }
 
-  setState(component, {
+  setState({
     status: 'disconnected',
     videoUrl: null,
     connetion: null
   })
 }
 
-export const renderButton = (component, status) => {
+export const renderButton = (state, setState) => {
+  const status = state.get('status')
+
   if (status === 'disconnected') {
     return (
       <Button
         title='Connect'
-        onPress={ () => connectPressed(component) } />
+        onPress={ () => connectPressed(setState) } />
     )
   } else if (status === 'connecting') {
     return (
@@ -62,10 +60,11 @@ export const renderButton = (component, status) => {
         title='Connecting..' />
     )
   } else if (status === 'connected') {
+    const connection = state.get('connection')
     return (
       <Button
         title='Stop'
-        onPress={ () => stopVideo(component) } />
+        onPress={ () => stopVideo(connection, setState) } />
     )
   }
 
