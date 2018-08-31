@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -21,6 +22,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		18BD3075A2C44D7E8C090ACE /* libRCTWebRTC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57C0650B396A4ABE9F089E70 /* libRCTWebRTC.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -37,7 +39,19 @@
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
-		18BD3075A2C44D7E8C090ACE /* libRCTWebRTC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57C0650B396A4ABE9F089E70 /* libRCTWebRTC.a */; };
+		F001A2FA213935B7003B4FAC /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F001A2F9213935B7003B4FAC /* WebRTC.framework */; };
+		F001A301213936ED003B4FAC /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F001A2F9213935B7003B4FAC /* WebRTC.framework */; };
+		F001A302213936ED003B4FAC /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F001A2F9213935B7003B4FAC /* WebRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F001A3052139373A003B4FAC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F001A3042139373A003B4FAC /* AVFoundation.framework */; };
+		F001A30721393743003B4FAC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F001A30621393743003B4FAC /* AudioToolbox.framework */; };
+		F001A3092139374B003B4FAC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F001A3082139374B003B4FAC /* CoreGraphics.framework */; };
+		F001A30B21393753003B4FAC /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F001A30A21393753003B4FAC /* GLKit.framework */; };
+		F001A30D2139375B003B4FAC /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F001A30C2139375B003B4FAC /* CoreAudio.framework */; };
+		F001A30F21393762003B4FAC /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F001A30E21393762003B4FAC /* CoreVideo.framework */; };
+		F001A3112139376B003B4FAC /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F001A3102139376B003B4FAC /* VideoToolbox.framework */; };
+		F001A31321393775003B4FAC /* libc.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F001A31221393775003B4FAC /* libc.tbd */; };
+		F001A3152139377F003B4FAC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F001A3142139377E003B4FAC /* libsqlite3.tbd */; };
+		F001A31721393787003B4FAC /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F001A31621393787003B4FAC /* libstdc++.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -314,7 +328,35 @@
 			remoteGlobalIDString = 358F4ED71D1E81A9004DF814;
 			remoteInfo = RCTBlob;
 		};
+		F001A2F72139354D003B4FAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8931D2F6E1B347F2B4C1C613 /* RCTWebRTC.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 35A2221F1CB493700015FD5C;
+			remoteInfo = RCTWebRTC;
+		};
+		F001A2FF213935C4003B4FAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F001A2FB213935C4003B4FAC /* RCTWebRTC.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 35A2221F1CB493700015FD5C;
+			remoteInfo = RCTWebRTC;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F001A303213936ED003B4FAC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F001A302213936ED003B4FAC /* WebRTC.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
@@ -339,12 +381,24 @@
 		2D02E47B1E0B4A5D006451C7 /* millicast7-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "millicast7-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* millicast7-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "millicast7-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		57C0650B396A4ABE9F089E70 /* libRCTWebRTC.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTWebRTC.a; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		8931D2F6E1B347F2B4C1C613 /* RCTWebRTC.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTWebRTC.xcodeproj; path = "../node_modules/react-native-webrtc/ios/RCTWebRTC.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
-		8931D2F6E1B347F2B4C1C613 /* RCTWebRTC.xcodeproj */ = {isa = PBXFileReference; name = "RCTWebRTC.xcodeproj"; path = "../node_modules/react-native-webrtc/ios/RCTWebRTC.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		57C0650B396A4ABE9F089E70 /* libRCTWebRTC.a */ = {isa = PBXFileReference; name = "libRCTWebRTC.a"; path = "libRCTWebRTC.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		F001A2F9213935B7003B4FAC /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebRTC.framework; path = "../node_modules/react-native-webrtc/ios/WebRTC.framework"; sourceTree = "<group>"; };
+		F001A2FB213935C4003B4FAC /* RCTWebRTC.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebRTC.xcodeproj; path = "../node_modules/react-native-webrtc/ios/RCTWebRTC.xcodeproj"; sourceTree = "<group>"; };
+		F001A3042139373A003B4FAC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		F001A30621393743003B4FAC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		F001A3082139374B003B4FAC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F001A30A21393753003B4FAC /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		F001A30C2139375B003B4FAC /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		F001A30E21393762003B4FAC /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		F001A3102139376B003B4FAC /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		F001A31221393775003B4FAC /* libc.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libc.tbd; path = usr/lib/libc.tbd; sourceTree = SDKROOT; };
+		F001A3142139377E003B4FAC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		F001A31621393787003B4FAC /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -360,14 +414,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F001A31721393787003B4FAC /* libstdc++.tbd in Frameworks */,
+				F001A3152139377F003B4FAC /* libsqlite3.tbd in Frameworks */,
+				F001A31321393775003B4FAC /* libc.tbd in Frameworks */,
+				F001A3112139376B003B4FAC /* VideoToolbox.framework in Frameworks */,
+				F001A30F21393762003B4FAC /* CoreVideo.framework in Frameworks */,
+				F001A30D2139375B003B4FAC /* CoreAudio.framework in Frameworks */,
+				F001A30B21393753003B4FAC /* GLKit.framework in Frameworks */,
+				F001A3092139374B003B4FAC /* CoreGraphics.framework in Frameworks */,
+				F001A30721393743003B4FAC /* AudioToolbox.framework in Frameworks */,
+				F001A3052139373A003B4FAC /* AVFoundation.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
+				F001A301213936ED003B4FAC /* WebRTC.framework in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
+				F001A2FA213935B7003B4FAC /* WebRTC.framework in Frameworks */,
 				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
@@ -522,6 +588,17 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F001A31621393787003B4FAC /* libstdc++.tbd */,
+				F001A3142139377E003B4FAC /* libsqlite3.tbd */,
+				F001A31221393775003B4FAC /* libc.tbd */,
+				F001A3102139376B003B4FAC /* VideoToolbox.framework */,
+				F001A30E21393762003B4FAC /* CoreVideo.framework */,
+				F001A30C2139375B003B4FAC /* CoreAudio.framework */,
+				F001A30A21393753003B4FAC /* GLKit.framework */,
+				F001A3082139374B003B4FAC /* CoreGraphics.framework */,
+				F001A30621393743003B4FAC /* AudioToolbox.framework */,
+				F001A3042139373A003B4FAC /* AVFoundation.framework */,
+				F001A2F9213935B7003B4FAC /* WebRTC.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
 			);
 			name = Frameworks;
@@ -548,6 +625,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				F001A2FB213935C4003B4FAC /* RCTWebRTC.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -582,6 +660,7 @@
 				00E356EF1AD99517003FC87E /* millicast7Tests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				F001A2CE2139353F003B4FAC /* Recovered References */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -604,6 +683,30 @@
 			children = (
 				ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */,
 				2D16E6721FA4F8DC00B85C8A /* libRCTBlob-tvOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F001A2CE2139353F003B4FAC /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				57C0650B396A4ABE9F089E70 /* libRCTWebRTC.a */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		F001A2F42139354C003B4FAC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F001A2F82139354D003B4FAC /* libRCTWebRTC.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F001A2FC213935C4003B4FAC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F001A300213935C4003B4FAC /* libRCTWebRTC.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -637,6 +740,7 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				F001A303213936ED003B4FAC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -694,10 +798,15 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = FABFSVLHGN;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = FABFSVLHGN;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = FABFSVLHGN;
 						ProvisioningStyle = Automatic;
 					};
 					2D02E48F1E0B4A5D006451C7 = {
@@ -758,6 +867,14 @@
 				{
 					ProductGroup = 00C302E01ABCB9EE00DB3ED1 /* Products */;
 					ProjectRef = 00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */;
+				},
+				{
+					ProductGroup = F001A2F42139354C003B4FAC /* Products */;
+					ProjectRef = 8931D2F6E1B347F2B4C1C613 /* RCTWebRTC.xcodeproj */;
+				},
+				{
+					ProductGroup = F001A2FC213935C4003B4FAC /* Products */;
+					ProjectRef = F001A2FB213935C4003B4FAC /* RCTWebRTC.xcodeproj */;
 				},
 				{
 					ProductGroup = 139FDEE71B06529A00C62182 /* Products */;
@@ -1038,6 +1155,20 @@
 			remoteRef = ADBDB9261DFEBF0700ED6528 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		F001A2F82139354D003B4FAC /* libRCTWebRTC.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTWebRTC.a;
+			remoteRef = F001A2F72139354D003B4FAC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F001A300213935C4003B4FAC /* libRCTWebRTC.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTWebRTC.a;
+			remoteRef = F001A2FF213935C4003B4FAC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1172,27 +1303,28 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = FABFSVLHGN;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-webrtc/ios/RCTWebRTC/**",
+				);
 				INFOPLIST_FILE = millicast7Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/millicast7.app/millicast7";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-webrtc/ios/RCTWebRTC/**",
-				);
 			};
 			name = Debug;
 		};
@@ -1201,23 +1333,24 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = FABFSVLHGN;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-webrtc/ios/RCTWebRTC/**",
+				);
 				INFOPLIST_FILE = millicast7Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/millicast7.app/millicast7";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-webrtc/ios/RCTWebRTC/**",
-				);
 			};
 			name = Release;
 		};
@@ -1227,8 +1360,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = FABFSVLHGN;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-webrtc/ios";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-webrtc/ios/RCTWebRTC/**",
+				);
 				INFOPLIST_FILE = millicast7/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-webrtc/ios";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1236,10 +1377,6 @@
 				);
 				PRODUCT_NAME = millicast7;
 				VERSIONING_SYSTEM = "apple-generic";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-webrtc/ios/RCTWebRTC/**",
-				);
 			};
 			name = Debug;
 		};
@@ -1248,8 +1385,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FABFSVLHGN;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-webrtc/ios";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-webrtc/ios/RCTWebRTC/**",
+				);
 				INFOPLIST_FILE = millicast7/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-webrtc/ios";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1257,10 +1402,6 @@
 				);
 				PRODUCT_NAME = millicast7;
 				VERSIONING_SYSTEM = "apple-generic";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-webrtc/ios/RCTWebRTC/**",
-				);
 			};
 			name = Release;
 		};
@@ -1274,10 +1415,19 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = FABFSVLHGN;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-webrtc/ios/RCTWebRTC/**",
+				);
 				INFOPLIST_FILE = "millicast7-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1287,14 +1437,6 @@
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-webrtc/ios/RCTWebRTC/**",
-				);
 			};
 			name = Debug;
 		};
@@ -1309,9 +1451,18 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = FABFSVLHGN;
 				GCC_NO_COMMON_BLOCKS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-webrtc/ios/RCTWebRTC/**",
+				);
 				INFOPLIST_FILE = "millicast7-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1321,14 +1472,6 @@
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-webrtc/ios/RCTWebRTC/**",
-				);
 			};
 			name = Release;
 		};
@@ -1343,8 +1486,16 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-webrtc/ios/RCTWebRTC/**",
+				);
 				INFOPLIST_FILE = "millicast7-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1354,14 +1505,6 @@
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/millicast7-tvOS.app/millicast7-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-webrtc/ios/RCTWebRTC/**",
-				);
 			};
 			name = Debug;
 		};
@@ -1376,8 +1519,16 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-webrtc/ios/RCTWebRTC/**",
+				);
 				INFOPLIST_FILE = "millicast7-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1387,14 +1538,6 @@
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/millicast7-tvOS.app/millicast7-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-webrtc/ios/RCTWebRTC/**",
-				);
 			};
 			name = Release;
 		};
