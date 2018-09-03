@@ -12,5 +12,13 @@ module.exports = {
     react: {
       version: '16.4.1'
     }
-  }
+  },
+  overrides: [
+    {
+      files: '*',
+      rules: {
+        'react/display-name': 'off'
+      }
+    }
+  ]
 }

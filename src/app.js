@@ -1,14 +1,15 @@
-import { renderApp } from './view/app'
-import { stateRendererClass } from './state'
+import { Component } from 'react'
+import * as config from './config'
+// import { viewerRenderer } from './viewer'
+// import { broadcastRenderer } from './broadcast'
+import { mainRenderer } from './main'
 
-import {
-  milliId
-} from './config'
+export class App extends Component {
+  constructor (props) {
+    super(props)
 
-export const App = stateRendererClass(
-  {
-    videoUrl: null,
-    status: 'disconnected',
-    milliId
-  },
-  renderApp)
+    this.render = mainRenderer(config)
+    // this.render = viewerRenderer(config)
+    // this.render = broadcastRenderer(config)
+  }
+}

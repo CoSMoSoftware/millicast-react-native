@@ -2,8 +2,7 @@ import React from 'react'
 
 import {
   Text,
-  View,
-  StyleSheet
+  View
 } from 'react-native'
 
 import {
@@ -19,36 +18,14 @@ import {
 } from './input'
 
 import {
+  stateRenderer,
   stateFieldSetter,
   stateFieldsSetter
-} from '../state'
+} from '../render/state'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: '5%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF'
-  },
-  title: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10
-  },
-  description: {
-    textAlign: 'center',
-    color: '#333333',
-    marginTop: 5,
-    marginBottom: 15
-  },
-  video: {
-    width: 480,
-    height: 320
-  }
-})
+import { styles } from './styles'
 
-export const renderApp = (state, setState) => {
+export const renderViewer = (state, setState) => {
   return (
     <View style={ styles.container }>
       { renderRemoteStream(state) }
@@ -70,4 +47,16 @@ export const renderApp = (state, setState) => {
       }
     </View>
   )
+}
+
+export const viewerRenderer = config => {
+  const { milliId } = config
+
+  return stateRenderer(
+    {
+      videoUrl: null,
+      status: 'disconnected',
+      milliId
+    },
+    renderViewer)
 }

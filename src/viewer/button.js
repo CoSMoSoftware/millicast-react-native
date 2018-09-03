@@ -9,7 +9,7 @@ import {
   websocketUrl
 } from '../config'
 
-import { connectMillicast } from '../client'
+import { connectMillicast } from './client'
 
 const connectPressed = async (setState, milliId) => {
   console.log('connecting milliast')
