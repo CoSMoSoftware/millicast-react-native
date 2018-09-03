@@ -1,4 +1,5 @@
-import { Component } from 'react'
+import React, { Component } from 'react'
+import { PropTypes } from 'prop-types'
 import { Map as IMap } from 'immutable'
 
 export const setState = (component, entries) => {
@@ -28,10 +29,16 @@ export const getState = component =>
 
 // Renderer :: State -> (PartialState -> ()) -> Element
 // stateRenderer :: State -> Renderer -> Class Component
-export const stateRenderer = (initState, renderer) => {
+export const stateRendererClass = (initState, renderer) => {
   const initIState = IMap(initState)
 
   return class StateRenderer extends Component {
+    static get propTypes () {
+      return {
+        args: PropTypes.any
+      }
+    }
+
     constructor (props) {
       super(props)
 
@@ -44,7 +51,18 @@ export const stateRenderer = (initState, renderer) => {
       const state = getState(this)
       const setState = stateSetter(this)
 
-      return renderer(state, setState)
+      const { args = {} } = this.props
+
+      return renderer(state, setState, args)
     }
+  }
+}
+
+export const stateRenderer = (initState, renderer) => {
+  const StateRenderer = stateRendererClass(initState, renderer)
+
+  return args => { // eslint-disable-line react/display-name
+    console.log('stateRenderer called', args)
+    return <StateRenderer args={args} />
   }
 }

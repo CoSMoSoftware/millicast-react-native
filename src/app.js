@@ -1,11 +1,11 @@
 import { renderApp } from './view/app'
-import { stateRenderer } from './state'
+import { stateRendererClass } from './state'
 
 import {
   milliId
 } from './config'
 
-export const App = stateRenderer(
+export const App = stateRendererClass(
   {
     videoUrl: null,
     status: 'disconnected',
