@@ -6,8 +6,7 @@ import {
 } from 'react-native'
 
 import {
-  RTCView, // eslint-disable-line import/named
-  getUserMedia // eslint-disable-line import/named
+  RTCView // eslint-disable-line import/named
 } from 'react-native-webrtc'
 
 import { styles } from './styles'
@@ -21,65 +20,54 @@ import {
 } from './input'
 
 import {
-  stateRenderer,
-  stateFieldSetter,
-  stateFieldsSetter
+  stateRenderer
 } from '../render/state'
 
-import { asyncRenderer } from '../render/async'
+import {
+  createMillicastClient
+} from '../client'
 
-export const renderBroadcast = (state, setState, mediaStream) => {
-  console.log('rendering broadcast')
-  return (
-    <View style={ styles.container }>
-      <RTCView streamURL={ mediaStream.toURL() } style={ styles.video } />
-      <Text style={ styles.title }>
-        Millicast Mobile Broadcast Demo
-      </Text>
-      {
-        renderMilliIdInput(state,
-          stateFieldSetter(setState, 'milliId'))
-      }
-      <Text style={ styles.description }>
-        Broadcast a stream to the specified Millicast ID.
-      </Text>
-      {
-        renderButton(state,
-          stateFieldsSetter(setState,
-            ['status', 'connection']),
-          mediaStream)
-      }
-    </View>
-  )
-}
+export const broadcastRenderer = (config, mediaStream) => {
+  const { logger, milliId } = config
 
-export const broadcastRenderer = config => {
-  const { milliId } = config
+  const millicastClient = createMillicastClient(config)
 
-  const rendererPromise = (async () => {
-    const mediaStream = await getUserMedia({
-      audio: true,
-      video: {
-        facingMode: {
-          exact: 'user'
+  const renderBroadcast = (state, setState) => {
+    logger.log('rendering broadcast')
+
+    const mediaStream = state.get('mediaStream')
+
+    return (
+      <View style={ styles.container }>
+        <RTCView streamURL={ mediaStream.toURL() } style={ styles.video } />
+        <Text style={ styles.title }>
+          Millicast Mobile Broadcast Demo
+        </Text>
+        {
+          renderMilliIdInput(state, setState)
         }
-      }
+        <Text style={ styles.description }>
+          Broadcast a stream to the specified Millicast ID.
+        </Text>
+        {
+          renderButton(state, setState, {
+            logger,
+            mediaStream,
+            millicastClient
+          })
+        }
+      </View>
+    )
+  }
+
+  return stateRenderer(
+    {
+      status: 'disconnected',
+      milliId,
+      connection: null,
+      mediaStream
+    },
+    (state, setState) => {
+      return renderBroadcast(state, setState)
     })
-
-    console.log('got media stream:', mediaStream, mediaStream.getTracks)
-
-    return stateRenderer(
-      {
-        status: 'disconnected',
-        milliId,
-        connection: null
-      },
-      (state, setState) => {
-        return renderBroadcast(state, setState, mediaStream)
-      })
-  })()
-
-  return asyncRenderer(rendererPromise,
-    () => (<Text>Getting media stream..</Text>),
-    err => () => (<Text>Error getting media stream: { err }</Text>))
 }

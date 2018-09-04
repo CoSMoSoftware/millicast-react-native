@@ -5,9 +5,12 @@ import { broadcastRenderer } from '../broadcast'
 import { stateRenderer } from '../render/state'
 
 import {
+  getUserMedia // eslint-disable-line import/named
+} from 'react-native-webrtc'
+
+import {
   Text,
   View,
-  Button,
   TouchableHighlight
 } from 'react-native'
 
@@ -15,15 +18,28 @@ import { styles } from './styles'
 
 export const mainRenderer = config => {
   const renderViewer = viewerRenderer(config)
-  const renderBroadcast = broadcastRenderer(config)
 
   const renderMain = (state, setState) => {
-    const mode = state.get('mode')
+    const renderer = state.get('renderer')
+    if (renderer) return renderer()
 
-    if (mode === 'viewer') {
-      return renderViewer()
-    } else if (mode === 'broadcast') {
-      return renderBroadcast()
+    const buttonDisabled = state.get('loading')
+
+    const publishPressed = async () => {
+      setState({ loading: true })
+
+      const mediaStream = await getUserMedia({
+        audio: true,
+        video: {
+          facingMode: {
+            exact: 'user'
+          }
+        }
+      })
+
+      const renderBroadcast = broadcastRenderer(config, mediaStream)
+
+      setState({ renderer: renderBroadcast })
     }
 
     return (
@@ -36,13 +52,15 @@ export const mainRenderer = config => {
         </Text>
         <View style={ styles.selections }>
           <TouchableHighlight
+            disabled = { buttonDisabled }
             style = { styles.button }
-            onPress={ () => setState({ mode: 'broadcast' }) }>
-            <Text style={ styles.buttonText }>Broadcast</Text>
+            onPress={ publishPressed }>
+            <Text style={ styles.buttonText }>Publish</Text>
           </TouchableHighlight>
           <TouchableHighlight
+            disabled = { buttonDisabled }
             style = { styles.button }
-            onPress={ () => setState({ mode: 'viewer' }) }>
+            onPress={ () => setState({ renderer: renderViewer }) }>
             <Text style={ styles.buttonText }>Viewer</Text>
           </TouchableHighlight>
         </View>
@@ -51,6 +69,7 @@ export const mainRenderer = config => {
   }
 
   return stateRenderer({
-    mode: null
+    loading: false,
+    renderer: null
   }, renderMain)
 }
