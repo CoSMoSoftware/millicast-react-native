@@ -18,7 +18,7 @@ const connectPressed = async (setState, milliId, args) => {
   })
 
   const iceServers = await millicastClient.getIceServers()
-  logger.log('ice servers:', iceServers)
+  logger.log('ice servers:', ...iceServers)
 
   const connection = await millicastClient.publishStream(
     milliId, iceServers, mediaStream)
