@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { viewerRenderer } from '../viewer'
-import { broadcastRenderer } from '../broadcast'
-import { stateRenderer } from '../render/state'
+import { broadcastRenderer } from '../publish'
+import { stateRenderer } from '../../render/state'
 
 import {
   getUserMedia // eslint-disable-line import/named

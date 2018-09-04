@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   }
 })
 
-export const renderMilliIdInput = (state, setMilliId) => {
+export const renderMilliIdInput = (state, setState) => {
   return (
     <View>
       <Text style={ styles.milliLabel }>
@@ -32,7 +32,7 @@ export const renderMilliIdInput = (state, setMilliId) => {
       <TextInput
         style = { styles.milliInput }
         value = { state.get('milliId') }
-        onChangeText = { milliId => setMilliId(milliId) }
+        onChangeText = { milliId => setState({ milliId }) }
       />
     </View>
   )

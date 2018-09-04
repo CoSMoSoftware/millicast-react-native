@@ -15,15 +15,15 @@ import {
 
 import {
   renderMilliIdInput
-} from './input'
+} from '../common/input'
 
 import {
   stateRenderer
-} from '../render/state'
+} from '../../render'
 
 import {
   createMillicastClient
-} from '../client'
+} from '../../client'
 
 import { styles } from './styles'
 

@@ -11,19 +11,6 @@ export const setState = (component, entries) => {
 export const stateSetter = component => entries =>
   setState(component, entries)
 
-export const stateFieldSetter = (setState, key) => value =>
-  setState({
-    [key]: value
-  })
-
-export const stateFieldsSetter = (setState, keys) => state => {
-  const inState = {}
-  for (const key of keys) {
-    inState[key] = state[key]
-  }
-  setState(inState)
-}
-
 export const getState = component =>
   component.state.state
 
@@ -61,8 +48,7 @@ export const stateRendererClass = (initState, renderer) => {
 export const stateRenderer = (initState, renderer) => {
   const StateRenderer = stateRendererClass(initState, renderer)
 
-  return args => { // eslint-disable-line react/display-name
-    console.log('stateRenderer called', args)
+  return args => {
     return <StateRenderer args={args} />
   }
 }
