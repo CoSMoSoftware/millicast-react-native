@@ -8,12 +8,13 @@ import {
 } from 'react-native'
 
 const styles = StyleSheet.create({
-  milliLabel: {
+  inputLabel: {
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5
   },
-  milliInput: {
+  textInput: {
+    textAlign: 'center',
     borderWidth: 1,
     borderColor: 'gray',
     height: 40,
@@ -23,16 +24,21 @@ const styles = StyleSheet.create({
   }
 })
 
-export const renderMilliIdInput = (state, setState) => {
+export const renderStreamIdInput = (fieldName, description, state, setState) => {
   return (
     <View>
-      <Text style={ styles.milliLabel }>
-        Enter Millicast ID:
+      <Text style={ styles.inputLabel }>
+        { description }
       </Text>
       <TextInput
-        style = { styles.milliInput }
-        value = { state.get('milliId') }
-        onChangeText = { milliId => setState({ milliId }) }
+        style = { styles.textInput }
+        value = { state.get(fieldName) }
+        onChangeText = {
+          streamId =>
+            setState({
+              [fieldName]: streamId
+            })
+        }
       />
     </View>
   )

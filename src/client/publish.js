@@ -3,7 +3,7 @@ import { rejectionForwarder } from './util'
 /* global WebSocket */
 
 export const makePublisherClient = (RTCPeerConnection, RTCSessionDescription) =>
-  async (logger, websocketUrl, milliId, iceServers, mediaStream) => {
+  async (logger, websocketUrl, streamId, iceServers, mediaStream) => {
     logger.log('connecting to:', websocketUrl)
     logger.log('ice servers:', iceServers)
 
@@ -32,8 +32,7 @@ export const makePublisherClient = (RTCPeerConnection, RTCSessionDescription) =>
         await pc.setLocalDescription(offer)
 
         const data = {
-          milliId,
-          name: milliId,
+          name: streamId,
           sdp: offer.sdp,
           codec: 'h264'
         }

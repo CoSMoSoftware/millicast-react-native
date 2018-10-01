@@ -16,7 +16,7 @@ import {
 } from './button'
 
 import {
-  renderMilliIdInput
+  renderStreamIdInput
 } from '../common/input'
 
 import {
@@ -28,7 +28,11 @@ import {
 } from '../../client'
 
 export const broadcastRenderer = (config, mediaStream) => {
-  const { logger, milliId } = config
+  const {
+    logger,
+    publisherToken,
+    publisherStreamId
+  } = config
 
   const millicastClient = createMillicastClient(config)
 
@@ -44,7 +48,16 @@ export const broadcastRenderer = (config, mediaStream) => {
           Millicast Mobile Broadcast Demo
         </Text>
         {
-          renderMilliIdInput(state, setState)
+          renderStreamIdInput(
+            'publisherStreamId',
+            'Publisher Stream ID:',
+            state, setState)
+        }
+        {
+          renderStreamIdInput(
+            'publisherToken',
+            'Publisher Token:',
+            state, setState)
         }
         <Text style={ styles.description }>
           Broadcast a stream to the specified Millicast ID.
@@ -63,9 +76,10 @@ export const broadcastRenderer = (config, mediaStream) => {
   return stateRenderer(
     {
       status: 'disconnected',
-      milliId,
       connection: null,
-      mediaStream
+      mediaStream,
+      publisherToken,
+      publisherStreamId
     },
     (state, setState) => {
       return renderBroadcast(state, setState)

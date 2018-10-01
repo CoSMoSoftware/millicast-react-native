@@ -1,5 +1,10 @@
 export const logger = console
-export const milliId = 'cosmo_stream1_XLgh7B'
-export const viewerUrl = 'wss://cdn.millicast.com/ws/alpha1/sub'
-export const publisherUrl = 'wss://cdn.millicast.com/ws/alpha1/pub'
-export const turnApiUrl = 'https://dev-noe.xirsys.com/rich1/webrtc/_turn'
+
+export const publisherStreamId = 'cosmo-test'
+export const publisherUrl = 'wss://live.millicast.com:443/ws/v1/pub'
+export const publisherToken = 'fdb68ca5052b825f94a3799be94ea8a9cfe1c878c175146b9f722ed6d7ec4f15'
+
+export const viewerStreamId = '3c2ett/cosmo-test'
+export const viewerUrl = 'wss://live.millicast.com:443/ws/v1/sub'
+
+export const turnApiUrl = 'https://turn.millicast.com/webrtc/_turn'

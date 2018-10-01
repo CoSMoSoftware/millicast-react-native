@@ -14,7 +14,7 @@ import {
 } from './button'
 
 import {
-  renderMilliIdInput
+  renderStreamIdInput
 } from '../common/input'
 
 import {
@@ -28,7 +28,10 @@ import {
 import { styles } from './styles'
 
 export const viewerRenderer = config => {
-  const { logger, milliId } = config
+  const {
+    logger,
+    viewerStreamId
+  } = config
 
   const millicastClient = createMillicastClient(config)
 
@@ -45,7 +48,10 @@ export const viewerRenderer = config => {
           Millicast Mobile Demo
         </Text>
         {
-          renderMilliIdInput(state, setState)
+          renderStreamIdInput(
+            'viewerStreamId',
+            'Viewer Stream ID:',
+            state, setState)
         }
         <Text style={ styles.description }>
           Broadcast a stream with the specified Millicast ID
@@ -62,7 +68,7 @@ export const viewerRenderer = config => {
     {
       videoUrl: null,
       status: 'disconnected',
-      milliId
+      viewerStreamId
     },
     renderViewer)
 }

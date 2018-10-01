@@ -4,7 +4,7 @@ import {
   Button
 } from 'react-native'
 
-const connectPressed = async (setState, milliId, args) => {
+const connectPressed = async (setState, streamId, token, args) => {
   const {
     logger,
     mediaStream,
@@ -21,7 +21,7 @@ const connectPressed = async (setState, milliId, args) => {
   logger.log('ice servers:', ...iceServers)
 
   const connection = await millicastClient.publishStream(
-    milliId, iceServers, mediaStream)
+    streamId, token, iceServers, mediaStream)
 
   logger.log('broadcast stream connected:', connection)
 
@@ -47,11 +47,12 @@ export const renderButton = (state, setState, args) => {
   const status = state.get('status')
 
   if (status === 'disconnected') {
-    const milliId = state.get('milliId')
+    const token = state.get('publisherToken')
+    const streamId = state.get('publisherStreamId')
     return (
       <Button
         title='Connect'
-        onPress={ () => connectPressed(setState, milliId, args) } />
+        onPress={ () => connectPressed(setState, streamId, token, args) } />
     )
   } else if (status === 'connecting') {
     return (

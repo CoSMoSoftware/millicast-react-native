@@ -18,12 +18,13 @@ export const makeMillicastClient = (RTCPeerConnection, RTCSessionDescription) =>
       return fetchIceServers(turnApiUrl)
     }
 
-    const viewStream = async (milliId, iceServers) => {
-      return viewerClient(logger, viewerUrl, milliId, iceServers)
+    const viewStream = async (streamId, iceServers) => {
+      return viewerClient(logger, viewerUrl, streamId, iceServers)
     }
 
-    const publishStream = async (milliId, iceServers, mediaStream) => {
-      return publisherClient(logger, publisherUrl, milliId, iceServers, mediaStream)
+    const publishStream = async (streamId, token, iceServers, mediaStream) => {
+      const fullPublisherUrl = `${publisherUrl}?token=${token}`
+      return publisherClient(logger, fullPublisherUrl, streamId, iceServers, mediaStream)
     }
 
     return {

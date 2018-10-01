@@ -3,7 +3,7 @@ import { rejectionForwarder } from './util'
 /* global WebSocket */
 
 export const makeViewerClient = (RTCPeerConnection, RTCSessionDescription) =>
-  async (logger, websocketUrl, milliId, iceServers) => {
+  async (logger, websocketUrl, streamId, iceServers) => {
     logger.log('connecting to:', websocketUrl)
 
     const pc = new RTCPeerConnection({
@@ -43,8 +43,7 @@ export const makeViewerClient = (RTCPeerConnection, RTCSessionDescription) =>
         await pc.setLocalDescription(offer)
 
         const data = {
-          milliId: milliId,
-          feedId: milliId,
+          streamId,
           sdp: offer.sdp
         }
 
@@ -52,7 +51,7 @@ export const makeViewerClient = (RTCPeerConnection, RTCSessionDescription) =>
           type: 'cmd',
           transId: 0,
           name: 'view',
-          data: data
+          data
         }
 
         logger.log('sending payload:', payload)
