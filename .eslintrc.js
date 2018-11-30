@@ -20,5 +20,11 @@ module.exports = {
         'react/display-name': 'off'
       }
     }
-  ]
+  ],
+  parser: 'babel-eslint',
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true
+    }
+  }
 }

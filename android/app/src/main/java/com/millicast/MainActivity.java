@@ -1,4 +1,4 @@
-package com.millicast7;
+package com.millicast;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "millicast7";
+        return "Millicast";
     }
 }

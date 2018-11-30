@@ -33,8 +33,8 @@ const connectPressed = async (setState, streamId, token, args) => {
 
 const stopVideo = (connection, setState) => {
   if (connection) {
-    connection.get('pc').close()
-    connection.get('ws').close()
+    connection.pc.close()
+    connection.ws.close()
   }
 
   setState({
