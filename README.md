@@ -2,7 +2,10 @@
 
 ## Dev Setup
 
-Install Android studio build tools: https://facebook.github.io/react-native/docs/getting-started#1-install-android-studio
+Make a copy of [config.example.js](src/config.example.js) and name it
+[config.js](src/config.js). This contains the default stream ID and
+token to use for the app demo, so that you do not need to enter
+them using your touchpad.
 
 Install npm dependencies:
 
@@ -16,10 +19,27 @@ In one terminal, run the Metro bundler:
 npm start
 ```
 
-In another terminal, run the app launcher:
+### Android
+
+Install Android studio build tools: https://facebook.github.io/react-native/docs/getting-started#1-install-android-studio
+
+You can run the app through Android Studio. Otherwise in a
+separate terminal, run the app launcher:
 
 ```bash
 make run-android
+```
+
+### iOS
+
+Before running on iOS devices, make sure to edit the correct
+provisioning profile through Xcode.
+
+You can run the app through Xcode. Otherwise in a separate
+terminal, run the app launcher:
+
+```bash
+make run-ios
 ```
 
 ## Production Setup
