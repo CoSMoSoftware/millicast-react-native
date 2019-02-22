@@ -11,7 +11,7 @@
     "prop-types": "^15.6.2",
     "react": "16.6.1",
     "react-native": "0.57.7",
-    "react-native-webrtc": "^1.67.1"
+    "react-native-webrtc": "git+ssh://git@github.com/CoSMoSoftware/react-native-webrtc.git"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
