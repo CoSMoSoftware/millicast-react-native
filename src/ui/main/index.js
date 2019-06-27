@@ -5,7 +5,7 @@ import { broadcastRenderer } from '../publish'
 import { stateRenderer } from '../../render/state'
 
 import {
-  getUserMedia // eslint-disable-line import/named
+  mediaDevices // eslint-disable-line import/named
 } from 'react-native-webrtc'
 
 import {
@@ -28,7 +28,7 @@ export const mainRenderer = config => {
     const publishPressed = async () => {
       setState({ loading: true })
 
-      const mediaStream = await getUserMedia({
+      const mediaStream = await mediaDevices.getUserMedia({
         audio: true,
         video: {
           facingMode: {
