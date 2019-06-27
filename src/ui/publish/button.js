@@ -17,11 +17,12 @@ const connectPressed = async (setState, streamId, token, args) => {
     status: 'connecting'
   })
 
+  const wsUrl = await millicastClient.publishDirector(streamId, token)
+  logger.log('director url:', ...wsUrl)
+
   const iceServers = await millicastClient.getIceServers()
   logger.log('ice servers:', ...iceServers)
-
-  const connection = await millicastClient.publishStream(
-    streamId, token, iceServers, mediaStream)
+  const connection = await millicastClient.publishStream(wsUrl, streamId, iceServers, mediaStream)
 
   logger.log('broadcast stream connected:', connection)
 

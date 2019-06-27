@@ -30,7 +30,8 @@ import { styles } from './styles'
 export const viewerRenderer = config => {
   const {
     logger,
-    viewerStreamId
+    viewerStreamId,
+    viewerStreamAccountId
   } = config
 
   const millicastClient = createMillicastClient(config)
@@ -53,6 +54,12 @@ export const viewerRenderer = config => {
             'Viewer Stream ID:',
             state, setState)
         }
+        {
+          renderStreamIdInput(
+            'viewerStreamAccountId',
+            'Viewer Stream Account ID:',
+            state, setState)
+        }
         <Text style={ styles.description }>
           Broadcast a stream with the specified Millicast ID
           and see it from here.
@@ -68,7 +75,8 @@ export const viewerRenderer = config => {
     {
       videoUrl: null,
       status: 'disconnected',
-      viewerStreamId
+      viewerStreamId,
+      viewerStreamAccountId
     },
     renderViewer)
 }
