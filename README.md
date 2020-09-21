@@ -13,6 +13,12 @@ Install npm dependencies:
 yarn
 ```
 
+Linking is now automatic, but you still have to install the pods required for ios.
+
+```bash
+cd ios && pod install && cd ..
+```
+
 In one terminal, run the Metro bundler:
 
 ```bash
