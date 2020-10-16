@@ -10,13 +10,19 @@ them using your touchpad.
 Install npm dependencies:
 
 ```bash
-npm install
+yarn
+```
+
+Linking is now automatic, but you still have to install the pods required for ios.
+
+```bash
+cd ios && pod install && cd ..
 ```
 
 In one terminal, run the Metro bundler:
 
 ```bash
-npm start
+yarn start
 ```
 
 ### Android
@@ -25,6 +31,12 @@ Install Android studio build tools: https://facebook.github.io/react-native/docs
 
 You can run the app through Android Studio. Otherwise in a
 separate terminal, run the app launcher:
+
+```bash
+yarn run react-native run-android
+```
+
+or
 
 ```bash
 make run-android
@@ -39,7 +51,26 @@ You can run the app through Xcode. Otherwise in a separate
 terminal, run the app launcher:
 
 ```bash
+yarn run react-native run-ios
+```
+
+or
+
+```bash
 make run-ios
+```
+
+### Advanced commands
+
+You may need to run more advanced commands to target specific devices etc... you can do this using the yarn commands.
+Ask for help from the commands and you will receive it.
+
+```bash
+yarn run react-native run-android --help
+```
+
+```
+yarn run react-native run-ios --help
 ```
 
 ## Production Setup
