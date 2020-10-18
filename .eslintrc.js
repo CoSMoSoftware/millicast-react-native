@@ -11,8 +11,11 @@ module.exports = {
   ],
   settings: {
     react: {
-      version: '16.4.1'
-    }
+      version: '16.4.1',
+    },
+    "import/ignore": [
+      "node_modules/react-native/index\\.js$"
+    ]
   },
   overrides: [
     {
