@@ -1,22 +1,35 @@
 diff --git a/node_modules/react-native-webrtc/.DS_Store b/node_modules/react-native-webrtc/.DS_Store
 new file mode 100644
-index 0000000..36d39ae
-Binary files /dev/null and b/node_modules/react-native-webrtc/.DS_Store differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-webrtc/AudioSession.js b/node_modules/react-native-webrtc/AudioSession.js
 new file mode 100644
-index 0000000..ec26527
+index 0000000..d242760
 --- /dev/null
 +++ b/node_modules/react-native-webrtc/AudioSession.js
-@@ -0,0 +1,10 @@
+@@ -0,0 +1,24 @@
 +'use strict';
 +
-+import { NativeModules } from 'react-native';
++import { NativeModules, Platform } from 'react-native';
 +
 +const { WebRTCModule } = NativeModules;
++const isIOS = Platform.OS === 'ios';
++
 +
 +export default {
-+    setPublisherMode: WebRTCModule.setPublisherMode,
-+    setViewerOnlyMode: WebRTCModule.setViewerOnlyMode
++    setPublisherMode: () => {
++        if (!isIOS) {
++            return;
++        }
++
++        WebRTCModule.setPublisherMode();
++    },
++    setViewerOnlyMode: () => {
++        if (!isIOS) {
++            return;
++        }
++
++        WebRTCModule.setViewerOnlyMode();
++    }
 +};
 diff --git a/node_modules/react-native-webrtc/index.js b/node_modules/react-native-webrtc/index.js
 index 45275ea..bd05495 100644
@@ -40,8 +53,7 @@ index 45275ea..bd05495 100644
  
 diff --git a/node_modules/react-native-webrtc/ios/.DS_Store b/node_modules/react-native-webrtc/ios/.DS_Store
 new file mode 100644
-index 0000000..60bfed9
-Binary files /dev/null and b/node_modules/react-native-webrtc/ios/.DS_Store differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-webrtc/ios/RCTWebRTC.xcodeproj/project.pbxproj b/node_modules/react-native-webrtc/ios/RCTWebRTC.xcodeproj/project.pbxproj
 index 02444cb..9d931e0 100644
 --- a/node_modules/react-native-webrtc/ios/RCTWebRTC.xcodeproj/project.pbxproj
@@ -107,8 +119,7 @@ index 0000000..18d9810
 +</plist>
 diff --git a/node_modules/react-native-webrtc/ios/RCTWebRTC.xcodeproj/project.xcworkspace/xcuserdata/danjenkins.xcuserdatad/UserInterfaceState.xcuserstate b/node_modules/react-native-webrtc/ios/RCTWebRTC.xcodeproj/project.xcworkspace/xcuserdata/danjenkins.xcuserdatad/UserInterfaceState.xcuserstate
 new file mode 100644
-index 0000000..ab07ef8
-Binary files /dev/null and b/node_modules/react-native-webrtc/ios/RCTWebRTC.xcodeproj/project.xcworkspace/xcuserdata/danjenkins.xcuserdatad/UserInterfaceState.xcuserstate differ
+index 0000000..e69de29
 diff --git a/node_modules/react-native-webrtc/ios/RCTWebRTC.xcodeproj/xcuserdata/danjenkins.xcuserdatad/xcschemes/xcschememanagement.plist b/node_modules/react-native-webrtc/ios/RCTWebRTC.xcodeproj/xcuserdata/danjenkins.xcuserdatad/xcschemes/xcschememanagement.plist
 new file mode 100644
 index 0000000..417e505
