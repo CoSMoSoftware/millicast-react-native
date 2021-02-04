@@ -3,9 +3,9 @@ import { makePublisherClient } from './publish'
 import { fetchIceServers } from './ice-server'
 import { fetchDirector } from './director'
 
-export const makeMillicastClient = (RTCPeerConnection, RTCSessionDescription) => {
-  const publisherClient = makePublisherClient(RTCPeerConnection, RTCSessionDescription)
-  const viewerClient = makeViewerClient(RTCPeerConnection, RTCSessionDescription)
+export const makeMillicastClient = (RTCPeerConnection, RTCSessionDescription, AudioSession) => {
+  const publisherClient = makePublisherClient(RTCPeerConnection, RTCSessionDescription, AudioSession)
+  const viewerClient = makeViewerClient(RTCPeerConnection, RTCSessionDescription, AudioSession)
 
   return config => {
     const {
@@ -45,7 +45,8 @@ export const makeMillicastClient = (RTCPeerConnection, RTCSessionDescription) =>
       publishDirector,
       viewStream,
       publishStream,
-      getIceServers
+      getIceServers,
+      AudioSession
     }
   }
 }

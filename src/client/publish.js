@@ -2,7 +2,7 @@ import { rejectionForwarder } from './util'
 
 /* global WebSocket */
 
-export const makePublisherClient = (RTCPeerConnection, RTCSessionDescription) =>
+export const makePublisherClient = (RTCPeerConnection, RTCSessionDescription, AudioSession) =>
   async (logger, websocketUrl, streamId, iceServers, mediaStream) => {
     logger.log('connecting to:', websocketUrl)
     logger.log('ice servers:', iceServers)

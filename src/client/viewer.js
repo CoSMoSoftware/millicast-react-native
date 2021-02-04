@@ -2,9 +2,11 @@ import { rejectionForwarder } from './util'
 
 /* global WebSocket */
 
-export const makeViewerClient = (RTCPeerConnection, RTCSessionDescription) =>
+export const makeViewerClient = (RTCPeerConnection, RTCSessionDescription, AudioSession) =>
   async (logger, websocketUrl, streamId, iceServers) => {
     logger.log('connecting to:', websocketUrl)
+
+    AudioSession.setViewerOnlyMode()
 
     const pc = new RTCPeerConnection({
       iceServers,
