@@ -7,14 +7,17 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "immutable": "^4.0.0-rc.12",
+    "patch-package": "^6.2.2",
+    "postinstall-postinstall": "^2.1.0",
     "prop-types": "^15.6.2",
     "react": "16.13.1",
     "react-native": "0.63.2",
-    "react-native-webrtc": "^1.84.0"
+    "react-native-webrtc": "1.87.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",

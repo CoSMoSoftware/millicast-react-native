@@ -1,0 +1,204 @@
+diff --git a/node_modules/react-native-webrtc/.DS_Store b/node_modules/react-native-webrtc/.DS_Store
+new file mode 100644
+index 0000000..e69de29
+diff --git a/node_modules/react-native-webrtc/AudioSession.js b/node_modules/react-native-webrtc/AudioSession.js
+new file mode 100644
+index 0000000..d242760
+--- /dev/null
++++ b/node_modules/react-native-webrtc/AudioSession.js
+@@ -0,0 +1,24 @@
++'use strict';
++
++import { NativeModules, Platform } from 'react-native';
++
++const { WebRTCModule } = NativeModules;
++const isIOS = Platform.OS === 'ios';
++
++
++export default {
++    setPublisherMode: () => {
++        if (!isIOS) {
++            return;
++        }
++
++        WebRTCModule.setPublisherMode();
++    },
++    setViewerOnlyMode: () => {
++        if (!isIOS) {
++            return;
++        }
++
++        WebRTCModule.setViewerOnlyMode();
++    }
++};
+diff --git a/node_modules/react-native-webrtc/index.js b/node_modules/react-native-webrtc/index.js
+index 45275ea..bd05495 100644
+--- a/node_modules/react-native-webrtc/index.js
++++ b/node_modules/react-native-webrtc/index.js
+@@ -8,6 +8,7 @@ import MediaStream from './MediaStream';
+ import MediaStreamTrack from './MediaStreamTrack';
+ import mediaDevices from './MediaDevices';
+ import permissions from './Permissions';
++import AudioSession from './AudioSession';
+ 
+ export {
+   RTCPeerConnection,
+@@ -18,6 +19,7 @@ export {
+   MediaStreamTrack,
+   mediaDevices,
+   permissions,
++  AudioSession,
+   registerGlobals
+ };
+ 
+diff --git a/node_modules/react-native-webrtc/ios/.DS_Store b/node_modules/react-native-webrtc/ios/.DS_Store
+new file mode 100644
+index 0000000..e69de29
+diff --git a/node_modules/react-native-webrtc/ios/RCTWebRTC.xcodeproj/project.pbxproj b/node_modules/react-native-webrtc/ios/RCTWebRTC.xcodeproj/project.pbxproj
+index 02444cb..9d931e0 100644
+--- a/node_modules/react-native-webrtc/ios/RCTWebRTC.xcodeproj/project.pbxproj
++++ b/node_modules/react-native-webrtc/ios/RCTWebRTC.xcodeproj/project.pbxproj
+@@ -17,6 +17,7 @@
+ 		35A222701CB493C00015FD5C /* WebRTCModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A222451CB493C00015FD5C /* WebRTCModule.m */; };
+ 		35EC07E61CB73DFE00F3D79C /* RCTConvert+WebRTC.m in Sources */ = {isa = PBXBuildFile; fileRef = 35EC07E51CB73DFE00F3D79C /* RCTConvert+WebRTC.m */; };
+ 		35EC083A1CB9AEE900F3D79C /* WebRTCModule+RTCDataChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 35EC08391CB9AEE900F3D79C /* WebRTCModule+RTCDataChannel.m */; };
++		64C0007625C9F6F800904514 /* WebRTCModule+RTCAudioSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C0007525C9F6F800904514 /* WebRTCModule+RTCAudioSession.m */; };
+ 		DECBD39D256D3A2D00B987E5 /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DECBD39C256D3A2D00B987E5 /* WebRTC.xcframework */; platformFilter = ios; };
+ /* End PBXBuildFile section */
+ 
+@@ -52,6 +53,7 @@
+ 		35EC07E51CB73DFE00F3D79C /* RCTConvert+WebRTC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RCTConvert+WebRTC.m"; sourceTree = "<group>"; };
+ 		35EC08381CB9AEC400F3D79C /* WebRTCModule+RTCDataChannel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WebRTCModule+RTCDataChannel.h"; sourceTree = "<group>"; };
+ 		35EC08391CB9AEE900F3D79C /* WebRTCModule+RTCDataChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WebRTCModule+RTCDataChannel.m"; sourceTree = "<group>"; };
++		64C0007525C9F6F800904514 /* WebRTCModule+RTCAudioSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "WebRTCModule+RTCAudioSession.m"; path = "RCTWebRTC/WebRTCModule+RTCAudioSession.m"; sourceTree = SOURCE_ROOT; };
+ 		DECBD39C256D3A2D00B987E5 /* WebRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = WebRTC.xcframework; path = ../apple/WebRTC.xcframework; sourceTree = "<group>"; };
+ 		DEFDBC26256574F500344B23 /* WebRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = WebRTC.xcframework; sourceTree = "<group>"; };
+ /* End PBXFileReference section */
+@@ -88,6 +90,7 @@
+ 		35A222311CB493C00015FD5C /* RCTWebRTC */ = {
+ 			isa = PBXGroup;
+ 			children = (
++				64C0007525C9F6F800904514 /* WebRTCModule+RTCAudioSession.m */,
+ 				35EC07E41CB73DBA00F3D79C /* RCTConvert+WebRTC.h */,
+ 				35EC07E51CB73DFE00F3D79C /* RCTConvert+WebRTC.m */,
+ 				0BDDA6DE20C17EA400B38B45 /* RTCMediaStreamTrack+React.h */,
+@@ -176,6 +179,7 @@
+ 			isa = PBXSourcesBuildPhase;
+ 			buildActionMask = 2147483647;
+ 			files = (
++				64C0007625C9F6F800904514 /* WebRTCModule+RTCAudioSession.m in Sources */,
+ 				35A2226D1CB493C00015FD5C /* WebRTCModule+RTCPeerConnection.m in Sources */,
+ 				0B56D000212C12EF00213CEE /* WebRTCModule+VideoTrackAdapter.m in Sources */,
+ 				35A2226C1CB493C00015FD5C /* WebRTCModule+RTCMediaStream.m in Sources */,
+diff --git a/node_modules/react-native-webrtc/ios/RCTWebRTC.xcodeproj/project.xcworkspace/contents.xcworkspacedata b/node_modules/react-native-webrtc/ios/RCTWebRTC.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+new file mode 100644
+index 0000000..919434a
+--- /dev/null
++++ b/node_modules/react-native-webrtc/ios/RCTWebRTC.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<Workspace
++   version = "1.0">
++   <FileRef
++      location = "self:">
++   </FileRef>
++</Workspace>
+diff --git a/node_modules/react-native-webrtc/ios/RCTWebRTC.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist b/node_modules/react-native-webrtc/ios/RCTWebRTC.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+new file mode 100644
+index 0000000..18d9810
+--- /dev/null
++++ b/node_modules/react-native-webrtc/ios/RCTWebRTC.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
++<plist version="1.0">
++<dict>
++	<key>IDEDidComputeMac32BitWarning</key>
++	<true/>
++</dict>
++</plist>
+diff --git a/node_modules/react-native-webrtc/ios/RCTWebRTC.xcodeproj/project.xcworkspace/xcuserdata/danjenkins.xcuserdatad/UserInterfaceState.xcuserstate b/node_modules/react-native-webrtc/ios/RCTWebRTC.xcodeproj/project.xcworkspace/xcuserdata/danjenkins.xcuserdatad/UserInterfaceState.xcuserstate
+new file mode 100644
+index 0000000..e69de29
+diff --git a/node_modules/react-native-webrtc/ios/RCTWebRTC.xcodeproj/xcuserdata/danjenkins.xcuserdatad/xcschemes/xcschememanagement.plist b/node_modules/react-native-webrtc/ios/RCTWebRTC.xcodeproj/xcuserdata/danjenkins.xcuserdatad/xcschemes/xcschememanagement.plist
+new file mode 100644
+index 0000000..417e505
+--- /dev/null
++++ b/node_modules/react-native-webrtc/ios/RCTWebRTC.xcodeproj/xcuserdata/danjenkins.xcuserdatad/xcschemes/xcschememanagement.plist
+@@ -0,0 +1,14 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
++<plist version="1.0">
++<dict>
++	<key>SchemeUserState</key>
++	<dict>
++		<key>RCTWebRTC.xcscheme_^#shared#^_</key>
++		<dict>
++			<key>orderHint</key>
++			<integer>0</integer>
++		</dict>
++	</dict>
++</dict>
++</plist>
+diff --git a/node_modules/react-native-webrtc/ios/RCTWebRTC/WebRTCModule+RTCAudioSession.h b/node_modules/react-native-webrtc/ios/RCTWebRTC/WebRTCModule+RTCAudioSession.h
+new file mode 100644
+index 0000000..88965ec
+--- /dev/null
++++ b/node_modules/react-native-webrtc/ios/RCTWebRTC/WebRTCModule+RTCAudioSession.h
+@@ -0,0 +1,8 @@
++//  RTCAudioSession.h
++#import <WebRTC/RTCAudioSession.h>
++#import <React/RCTBridgeModule.h>
++#import <AVFoundation/AVFoundation.h>
++
++@interface RTCAudioSession : NSObject <RCTBridgeModule>
++
++@end
+\ No newline at end of file
+diff --git a/node_modules/react-native-webrtc/ios/RCTWebRTC/WebRTCModule+RTCAudioSession.m b/node_modules/react-native-webrtc/ios/RCTWebRTC/WebRTCModule+RTCAudioSession.m
+new file mode 100644
+index 0000000..38cb522
+--- /dev/null
++++ b/node_modules/react-native-webrtc/ios/RCTWebRTC/WebRTCModule+RTCAudioSession.m
+@@ -0,0 +1,40 @@
++#import <objc/runtime.h>
++
++#import <WebRTC/RTCAudioSession.h>
++#import <WebRTC/RTCAudioSessionConfiguration.h>
++#import <AVFoundation/AVFoundation.h>
++#import <React/RCTLog.h>
++
++#import "WebRTCModule.h"
++
++@implementation WebRTCModule (RTCAudioSession)
++
++RCT_EXPORT_METHOD(setViewerOnlyMode)
++{
++    RCTLogInfo(@"setting viewer mode");
++    RTCAudioSessionConfiguration *audioConfig = [[RTCAudioSessionConfiguration alloc] init];
++    audioConfig.category = AVAudioSessionCategoryPlayback;
++    audioConfig.categoryOptions = AVAudioSessionCategoryOptionAllowBluetooth;
++    audioConfig.mode = AVAudioSessionModeMoviePlayback;
++
++    RTCAudioSession *session = [RTCAudioSession sharedInstance];
++    [session lockForConfiguration];
++    BOOL success = [session setConfiguration:audioConfig error:nil];
++    [session unlockForConfiguration];
++}
++
++RCT_EXPORT_METHOD(setPublisherMode)
++{
++    RCTLogInfo(@"setting publisher mode");
++
++    RTCAudioSessionConfiguration *audioConfig = [[RTCAudioSessionConfiguration alloc] init];
++    audioConfig.category = AVAudioSessionCategoryPlayAndRecord;
++    audioConfig.categoryOptions = AVAudioSessionCategoryOptionAllowBluetooth;
++    audioConfig.mode = AVAudioSessionModeVoiceChat;
++
++    RTCAudioSession *session = [RTCAudioSession sharedInstance];
++    [session lockForConfiguration];
++    BOOL success = [session setConfiguration:audioConfig error:nil];
++    [session unlockForConfiguration];
++}
++@end
+\ No newline at end of file
