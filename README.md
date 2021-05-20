@@ -1,4 +1,4 @@
-# Millicast React Native Demo
+# Millicast React Native SDK & Demo
 
 ## Dev Setup
 
