@@ -16,6 +16,8 @@ import {
 
 import { styles } from './styles'
 
+const enableStereo = true
+
 export const mainRenderer = config => {
   const renderViewer = viewerRenderer(config)
 
@@ -28,8 +30,19 @@ export const mainRenderer = config => {
     const publishPressed = async () => {
       setState({ loading: true })
 
+      let audio = true
+      // handle stereo request.
+      if (enableStereo) {
+        audio = {
+          channelCount: {
+            min: 2
+          },
+          echoCancellation: false
+        }
+      }
+
       const mediaStream = await mediaDevices.getUserMedia({
-        audio: true,
+        audio,
         video: {
           facingMode: {
             exact: 'user'

@@ -2,6 +2,8 @@ import { rejectionForwarder } from './util'
 
 /* global WebSocket */
 
+const enableStereo = true
+
 export const makeViewerClient = (RTCPeerConnection, RTCSessionDescription) =>
   async (logger, websocketUrl, streamId, iceServers) => {
     logger.log('connecting to:', websocketUrl)
@@ -38,6 +40,10 @@ export const makeViewerClient = (RTCPeerConnection, RTCSessionDescription) =>
           offerToReceiveAudio: true,
           offerToReceiveVideo: true
         })
+
+        if (enableStereo) {
+          offer.sdp = offer.sdp.replace('useinbandfec=1', 'useinbandfec=1; stereo=1')
+        }
 
         logger.log('offer:', offer)
         await pc.setLocalDescription(offer)
