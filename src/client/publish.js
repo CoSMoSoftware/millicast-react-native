@@ -55,7 +55,15 @@ export const makePublisherClient = (RTCPeerConnection, RTCSessionDescription) =>
           const { data } = message
 
           // react-native-webrtc would crash if the codec is spelled lowercase
-          const sdp = data.sdp.replace('h264', 'H264')
+          let sdp = data.sdp.replace('h264', 'H264')
+          /* handle older versions of Safari */
+          if (sdp && sdp.indexOf('\na=extmap-allow-mixed') !== -1) {
+            sdp = sdp.split('\n').filter((line) => {
+              return line.trim() !== 'a=extmap-allow-mixed'
+            }).join('\n')
+          }
+
+          sdp = `${sdp}a=x-google-flag:conference\r\n`
 
           logger.log('setting remote session description', sdp)
           await pc.setRemoteDescription(new RTCSessionDescription({
